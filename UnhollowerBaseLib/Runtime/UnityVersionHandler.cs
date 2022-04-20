@@ -159,7 +159,7 @@ namespace UnhollowerBaseLib.Runtime
 
         //Classes
         public static INativeClassStruct NewClass(int vTableSlots) =>
-            classStructHandler.CreateNewClassStruct(vTableSlots);
+            classStructHandler.CreateNewStruct(vTableSlots);
 
         public static unsafe INativeClassStruct Wrap(Il2CppClass* classPointer) =>
             classStructHandler.Wrap(classPointer);
@@ -240,7 +240,7 @@ namespace UnhollowerBaseLib.Runtime
 
         //Types
         public static INativeTypeStruct NewType() =>
-            typeStructHandler.CreateNewTypeStruct();
+            typeStructHandler.CreateNewStruct();
 
         public static unsafe INativeTypeStruct Wrap(Il2CppTypeStruct* typePointer) =>
             typeStructHandler.Wrap(typePointer);
