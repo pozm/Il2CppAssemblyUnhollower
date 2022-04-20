@@ -191,7 +191,7 @@ namespace UnhollowerBaseLib.Runtime
 
         //Images
         public static INativeImageStruct NewImage() =>
-            imageStructHandler.CreateNewImageStruct();
+            imageStructHandler.CreateNewStruct();
         
         public static unsafe INativeImageStruct Wrap(Il2CppImage* imagePointer) =>
             imageStructHandler.Wrap(imagePointer);
