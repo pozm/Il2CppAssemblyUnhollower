@@ -16,7 +16,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.PropertyInfo
             return new NativePropertyInfoStruct(pointer);
         }
 
-        public INativePropertyInfoStruct Wrap(Il2CppPropertyInfo* propertyInfoPointer)
+        public INativePropertyInfoStruct? Wrap(Il2CppPropertyInfo* propertyInfoPointer)
         {
             if ((IntPtr)propertyInfoPointer == IntPtr.Zero) return null;
             else return new NativePropertyInfoStruct((IntPtr)propertyInfoPointer);

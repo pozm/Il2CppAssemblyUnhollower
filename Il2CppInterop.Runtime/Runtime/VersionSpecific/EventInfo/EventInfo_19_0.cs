@@ -16,7 +16,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.EventInfo
             return new NativeEventInfoStruct(pointer);
         }
 
-        public INativeEventInfoStruct Wrap(Il2CppEventInfo* eventInfoPointer)
+        public INativeEventInfoStruct? Wrap(Il2CppEventInfo* eventInfoPointer)
         {
             if ((IntPtr)eventInfoPointer == IntPtr.Zero) return null;
             else return new NativeEventInfoStruct((IntPtr)eventInfoPointer);
@@ -27,7 +27,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.EventInfo
 #endif
 
         [StructLayout(LayoutKind.Sequential)]
-       internal struct Il2CppEventInfo_19_0
+        internal struct Il2CppEventInfo_19_0
         {
             public IntPtr name; // const char*
             public Il2CppTypeStruct* eventType; // const

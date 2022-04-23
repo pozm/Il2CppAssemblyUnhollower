@@ -16,7 +16,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.FieldInfo
             return new NativeFieldInfoStruct(pointer);
         }
 
-        public INativeFieldInfoStruct Wrap(Il2CppFieldInfo* fieldInfoPointer)
+        public INativeFieldInfoStruct? Wrap(Il2CppFieldInfo* fieldInfoPointer)
         {
             if ((IntPtr)fieldInfoPointer == IntPtr.Zero) return null;
             else return new NativeFieldInfoStruct((IntPtr)fieldInfoPointer);

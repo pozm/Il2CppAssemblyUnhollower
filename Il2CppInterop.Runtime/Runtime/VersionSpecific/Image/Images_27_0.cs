@@ -9,18 +9,18 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Image
         public unsafe int Size() => sizeof(Il2CppImage_27_0);
         public INativeImageStruct CreateNewImageStruct()
         {
-            var pointer = (Il2CppImage_27_0*) Marshal.AllocHGlobal(Marshal.SizeOf<Il2CppImage_27_0>());
-            var metadataPointer = (Il2CppImageGlobalMetadata_27_0*) Marshal.AllocHGlobal(Marshal.SizeOf<Il2CppImageGlobalMetadata_27_0>());
+            var pointer = (Il2CppImage_27_0*)Marshal.AllocHGlobal(Marshal.SizeOf<Il2CppImage_27_0>());
+            var metadataPointer = (Il2CppImageGlobalMetadata_27_0*)Marshal.AllocHGlobal(Marshal.SizeOf<Il2CppImageGlobalMetadata_27_0>());
 
             *pointer = default;
             *metadataPointer = default;
             pointer->metadataHandle = metadataPointer;
             metadataPointer->image = pointer;
 
-            return new NativeImageStruct((IntPtr) pointer);
+            return new NativeImageStruct((IntPtr)pointer);
         }
 
-        public INativeImageStruct Wrap(Il2CppImage* imagePointer)
+        public INativeImageStruct? Wrap(Il2CppImage* imagePointer)
         {
             if ((IntPtr)imagePointer == IntPtr.Zero) return null;
             else return new NativeImageStruct((IntPtr)imagePointer);

@@ -18,9 +18,9 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Class
             return new NativeClassStruct(pointer);
         }
 
-        public unsafe INativeClassStruct Wrap(Il2CppClass* classPointer)
+        public unsafe INativeClassStruct? Wrap(Il2CppClass* classPointer)
         {
-            if ((IntPtr) classPointer == IntPtr.Zero) return null;
+            if ((IntPtr)classPointer == IntPtr.Zero) return null;
             else return new NativeClassStruct((IntPtr)classPointer);
         }
 

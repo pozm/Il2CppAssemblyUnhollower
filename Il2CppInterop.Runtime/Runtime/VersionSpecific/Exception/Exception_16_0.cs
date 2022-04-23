@@ -16,7 +16,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Exception
             return new NativeExceptionStruct(pointer);
         }
 
-        public INativeExceptionStruct Wrap(Il2CppException* exceptionPointer)
+        public INativeExceptionStruct? Wrap(Il2CppException* exceptionPointer)
         {
             if ((IntPtr)exceptionPointer == IntPtr.Zero) return null;
             else return new NativeExceptionStruct((IntPtr)exceptionPointer);
@@ -60,7 +60,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Exception
 
             public ref Il2CppException* InnerException => ref dummyInnerException;
 
-            public INativeExceptionStruct InnerExceptionWrapped
+            public INativeExceptionStruct? InnerExceptionWrapped
             {
                 get
                 {

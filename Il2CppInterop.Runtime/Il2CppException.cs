@@ -5,9 +5,9 @@ namespace Il2CppInterop.Runtime
 {
     public class Il2CppException : Exception
     {
-        [ThreadStatic] private static byte[] ourMessageBytes;
+        [ThreadStatic] private static byte[]? ourMessageBytes;
 
-        public static Func<IntPtr, string> ParseMessageHook;
+        public static Func<IntPtr, string>? ParseMessageHook;
 
         public Il2CppException(IntPtr exception) : base(BuildMessage(exception))
         {
@@ -19,11 +19,11 @@ namespace Il2CppInterop.Runtime
             ourMessageBytes ??= new byte[65536];
             fixed (byte* message = ourMessageBytes)
                 IL2CPP.il2cpp_format_exception(exception, message, ourMessageBytes.Length);
-            string builtMessage = Encoding.UTF8.GetString(ourMessageBytes, 0, Array.IndexOf(ourMessageBytes, (byte) 0));
+            string builtMessage = Encoding.UTF8.GetString(ourMessageBytes, 0, Array.IndexOf(ourMessageBytes, (byte)0));
             fixed (byte* message = ourMessageBytes)
                 IL2CPP.il2cpp_format_stack_trace(exception, message, ourMessageBytes.Length);
             builtMessage +=
-                "\n" + Encoding.UTF8.GetString(ourMessageBytes, 0, Array.IndexOf(ourMessageBytes, (byte) 0));
+                "\n" + Encoding.UTF8.GetString(ourMessageBytes, 0, Array.IndexOf(ourMessageBytes, (byte)0));
             return builtMessage;
         }
 

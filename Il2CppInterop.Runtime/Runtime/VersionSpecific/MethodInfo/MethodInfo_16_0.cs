@@ -15,7 +15,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.MethodInfo
             return new NativeMethodInfoStructWrapper(pointer);
         }
 
-        public INativeMethodInfoStruct Wrap(Il2CppMethodInfo* methodPointer)
+        public INativeMethodInfoStruct? Wrap(Il2CppMethodInfo* methodPointer)
         {
             if ((IntPtr)methodPointer == IntPtr.Zero) return null;
             else return new NativeMethodInfoStructWrapper((IntPtr)methodPointer);

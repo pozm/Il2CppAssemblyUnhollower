@@ -18,7 +18,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Class
             return new NativeClassStruct(pointer);
         }
 
-        public unsafe INativeClassStruct Wrap(Il2CppClass* classPointer)
+        public unsafe INativeClassStruct? Wrap(Il2CppClass* classPointer)
         {
             if ((IntPtr)classPointer == IntPtr.Zero) return null;
             else return new NativeClassStruct((IntPtr)classPointer);
@@ -186,7 +186,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Class
                 Marshal.OffsetOf<NativeTypeStructHandler_27_2.Il2CppType_27_2>(nameof(NativeTypeStructHandler_27_2.Il2CppType_27_2.mods_byref_pin)).ToInt32();
 
             private static int this_arg_mods_byref_pin_offset =
-                Marshal.OffsetOf<Il2CppClass_27_2>(nameof(Il2CppClass_27_2.this_arg)).ToInt32() + 
+                Marshal.OffsetOf<Il2CppClass_27_2>(nameof(Il2CppClass_27_2.this_arg)).ToInt32() +
                 Marshal.OffsetOf<NativeTypeStructHandler_27_2.Il2CppType_27_2>(nameof(NativeTypeStructHandler_27_2.Il2CppType_27_2.mods_byref_pin)).ToInt32();
 
             public bool InitializedAndNoError

@@ -16,7 +16,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.EventInfo
             return new NativeEventInfoStruct(pointer);
         }
 
-        public INativeEventInfoStruct Wrap(Il2CppEventInfo* eventInfoPointer)
+        public INativeEventInfoStruct? Wrap(Il2CppEventInfo* eventInfoPointer)
         {
             if ((IntPtr)eventInfoPointer == IntPtr.Zero) return null;
             else return new NativeEventInfoStruct((IntPtr)eventInfoPointer);

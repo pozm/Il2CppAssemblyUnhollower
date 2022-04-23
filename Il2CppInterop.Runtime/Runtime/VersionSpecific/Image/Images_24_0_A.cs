@@ -17,7 +17,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Image
             return new NativeImageStruct(pointer);
         }
 
-        public INativeImageStruct Wrap(Il2CppImage* imagePointer)
+        public INativeImageStruct? Wrap(Il2CppImage* imagePointer)
         {
             if ((IntPtr)imagePointer == IntPtr.Zero) return null;
             else return new NativeImageStruct((IntPtr)imagePointer);
@@ -38,7 +38,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Image
 
             public /*TypeDefinitionIndex*/ int exportedTypeStart;
             public uint exportedTypeCount;
-            
+
             public /*MethodIndex*/ int entryPointIndex;
 
             public /*Il2CppNameToTypeDefinitionIndexHashTable **/ IntPtr nameToClassHashTable;

@@ -16,7 +16,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Assembly
             return new NativeAssemblyStruct(pointer);
         }
 
-        public INativeAssemblyStruct Wrap(Il2CppAssembly* assemblyPointer)
+        public INativeAssemblyStruct? Wrap(Il2CppAssembly* assemblyPointer)
         {
             if ((IntPtr)assemblyPointer == IntPtr.Zero) return null;
             else return new NativeAssemblyStruct((IntPtr)assemblyPointer);

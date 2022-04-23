@@ -102,7 +102,7 @@ namespace Il2CppInterop.Runtime.Runtime
         private static T GetHandler<T>()
         {
             if (Handlers.TryGetValue(typeof(T), out var result))
-                return (T) result;
+                return (T)result;
 
             Logger.Error($"No direct for {typeof(T).FullName} found for Unity {UnityVersion}; this likely indicates a severe error somewhere");
 
@@ -187,7 +187,7 @@ namespace Il2CppInterop.Runtime.Runtime
         //Images
         public static INativeImageStruct NewImage() =>
             imageStructHandler.CreateNewImageStruct();
-        
+
         public static unsafe INativeImageStruct Wrap(Il2CppImage* imagePointer) =>
             imageStructHandler.Wrap(imagePointer);
 

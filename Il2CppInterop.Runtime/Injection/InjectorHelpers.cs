@@ -21,8 +21,8 @@ namespace Il2CppInterop.Runtime.Injection
     internal static unsafe class InjectorHelpers
     {
 #if !MINI
-        internal static INativeAssemblyStruct InjectedAssembly;
-        internal static INativeImageStruct InjectedImage;
+        internal static INativeAssemblyStruct? InjectedAssembly;
+        internal static INativeImageStruct? InjectedImage;
         internal static ProcessModule Il2CppModule = Process.GetCurrentProcess()
             .Modules.OfType<ProcessModule>()
             .Single((x) => x.ModuleName == "GameAssembly.dll" || x.ModuleName == "UserAssembly.dll");
@@ -118,8 +118,8 @@ namespace Il2CppInterop.Runtime.Injection
 
             return classPtr;
         }
-        internal static d_ClassFromName ClassFromName;
-        internal static d_ClassFromName ClassFromNameOriginal;
+        internal static d_ClassFromName? ClassFromName;
+        internal static d_ClassFromName? ClassFromNameOriginal;
         private static d_ClassFromName FindClassFromName()
         {
             var classFromNameAPI = GetIl2CppExport(nameof(IL2CPP.il2cpp_class_from_name));
@@ -144,8 +144,8 @@ namespace Il2CppInterop.Runtime.Injection
             while (GetTypeInfoFromTypeDefinitionIndexOriginal == null) Thread.Sleep(1);
             return GetTypeInfoFromTypeDefinitionIndexOriginal(index);
         }
-        internal static d_GetTypeInfoFromTypeDefinitionIndex GetTypeInfoFromTypeDefinitionIndex;
-        internal static d_GetTypeInfoFromTypeDefinitionIndex GetTypeInfoFromTypeDefinitionIndexOriginal;
+        internal static d_GetTypeInfoFromTypeDefinitionIndex? GetTypeInfoFromTypeDefinitionIndex;
+        internal static d_GetTypeInfoFromTypeDefinitionIndex? GetTypeInfoFromTypeDefinitionIndexOriginal;
         private static d_GetTypeInfoFromTypeDefinitionIndex FindGetTypeInfoFromTypeDefinitionIndex()
         {
             var imageGetClassAPI = GetIl2CppExport(nameof(IL2CPP.il2cpp_image_get_class));
@@ -157,7 +157,8 @@ namespace Il2CppInterop.Runtime.Injection
             var imageGetTypeXrefs = XrefScannerLowLevel.JumpTargets(imageGetType);
             var getTypeInfoFromTypeDefinitionIndex = imageGetTypeXrefs.First();
 
-            if (imageGetTypeXrefs.Count() > 1) {
+            if (imageGetTypeXrefs.Count() > 1)
+            {
                 // (Kasuromi): metadata v29 introduces handles and adds extra calls, a check for unity versions might be necessary in the future
 
                 // Second call after obtaining handle, if there are any more calls in the future - correctly index into it if issues occur
@@ -192,8 +193,8 @@ namespace Il2CppInterop.Runtime.Injection
             while (ClassFromIl2CppTypeOriginal == null) Thread.Sleep(1);
             return ClassFromIl2CppTypeOriginal(type);
         }
-        internal static d_ClassFromIl2CppType ClassFromIl2CppType;
-        internal static d_ClassFromIl2CppType ClassFromIl2CppTypeOriginal;
+        internal static d_ClassFromIl2CppType? ClassFromIl2CppType;
+        internal static d_ClassFromIl2CppType? ClassFromIl2CppTypeOriginal;
         private static d_ClassFromIl2CppType FindClassFromIl2CppType()
         {
             var classFromTypeAPI = GetIl2CppExport(nameof(IL2CPP.il2cpp_class_from_il2cpp_type));
@@ -223,8 +224,8 @@ namespace Il2CppInterop.Runtime.Injection
             while (ClassGetFieldDefaultValueOriginal == null) Thread.Sleep(1);
             return ClassGetFieldDefaultValueOriginal(field, out type);
         }
-        internal static d_ClassGetFieldDefaultValue ClassGetFieldDefaultValue;
-        internal static d_ClassGetFieldDefaultValue ClassGetFieldDefaultValueOriginal;
+        internal static d_ClassGetFieldDefaultValue? ClassGetFieldDefaultValue;
+        internal static d_ClassGetFieldDefaultValue? ClassGetFieldDefaultValueOriginal;
         private static d_ClassGetFieldDefaultValue FindClassGetFieldDefaultValue()
         {
             var getStaticFieldValueAPI = GetIl2CppExport(nameof(IL2CPP.il2cpp_field_static_get_value));
@@ -249,7 +250,7 @@ namespace Il2CppInterop.Runtime.Injection
         #region Class::Init
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate void d_ClassInit(Il2CppClass* klass);
-        internal static d_ClassInit ClassInit;
+        internal static d_ClassInit? ClassInit;
 
         private static readonly MemoryUtils.SignatureDefinition[] s_ClassInitSignatures =
         {

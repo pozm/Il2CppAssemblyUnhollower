@@ -15,7 +15,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.MethodInfo
             return new NativeMethodInfoStructWrapper(pointer);
         }
 
-        public INativeMethodInfoStruct Wrap(Il2CppMethodInfo* methodPointer)
+        public INativeMethodInfoStruct? Wrap(Il2CppMethodInfo* methodPointer)
         {
             if ((IntPtr)methodPointer == IntPtr.Zero) return null;
             else return new NativeMethodInfoStructWrapper((IntPtr)methodPointer);
@@ -59,7 +59,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.MethodInfo
             public IntPtr name; // const char*
             public Il2CppClass* klass;
             public Il2CppTypeStruct* return_type;
-            
+
             public /* Il2CppTypeStruct** */ Il2CppParameterInfo* parameters;
             // Actually a type pointer array but left as parameter info because
             // it's the same size, and it makes the wrapper code much cleaner.
@@ -87,7 +87,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.MethodInfo
 
             public MethodInfoExtraFlags_27_3 extra_flags;
         }
-        
+
         [Flags]
         public enum MethodInfoExtraFlags_27_3 : byte
         {

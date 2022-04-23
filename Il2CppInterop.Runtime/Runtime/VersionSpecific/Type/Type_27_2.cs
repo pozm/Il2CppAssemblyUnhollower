@@ -16,7 +16,7 @@ namespace Il2CppInterop.Runtime.Runtime.VersionSpecific.Type
             return new NativeTypeStruct(pointer);
         }
 
-        public INativeTypeStruct Wrap(Il2CppTypeStruct* typePointer)
+        public INativeTypeStruct? Wrap(Il2CppTypeStruct* typePointer)
         {
             if ((IntPtr)typePointer == IntPtr.Zero) return null;
             else return new NativeTypeStruct((IntPtr)typePointer);
